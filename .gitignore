@@ -1,0 +1,11 @@
+Makefile
+lib/**/*.bundle
+tmp/*
+*.DS_Store
+coverage/*
+*.swp
+*.swo
+pkg/*
+*.gem
+
+!.keep
