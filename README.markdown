@@ -1,8 +1,6 @@
-# Summarize
+## Summarize - A Ruby C wrapper for Open Text Summarizer
 
-## A Ruby C wrapper for Open Text Summarizer
-
-## Install
+## Installation
 
 ### Easy
 
