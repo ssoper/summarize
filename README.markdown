@@ -4,11 +4,15 @@
 
 ## Install
 
-### Manual install
+### Easy
+
+    gem install summarize
+
+### Manual
 
     git clone https://github.com/ssoper/summarize.git
     cd summarize
-    rake build # install the rake-compiler gem if you dont already have it
+    rake build
     gem build summarize.gemspec
     gem install summarize-1.0.gem
 
