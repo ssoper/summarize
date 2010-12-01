@@ -27,7 +27,7 @@ Or use the String method
 By default it uses an English dictionary for summarizing but forty languages are supported. Pass in the valid ISO 639 language code to use one. A ratio (default is 25%) can also be passed in.
 
     # Parse an article using Portuguese stemming rules with a ratio of 50%
-    "text to summarize".summarize(:language => 'pt', :ratio => 50)
+    "texto para sumariar".summarize(:language => 'pt', :ratio => 50)
 
 You can also use custom stemming rules
 
