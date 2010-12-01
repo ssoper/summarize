@@ -1,6 +1,6 @@
 require 'summarize/summarize'
 
-class Hash
+class Hash #:nodoc:
   def symbolize_keys
     inject({}) do |options, (key, value)|
       options[(key.to_sym rescue key) || key] = value
@@ -10,7 +10,7 @@ class Hash
 end unless {}.respond_to? 'symbolize_keys'
 
 module Summarize
-  VERSION = "1.0.0"
+  VERSION = "1.0.1"
 
   LANGUAGES = [
     'bg', # Bulgarian
@@ -52,7 +52,7 @@ module Summarize
     'yi'  # Yiddish
   ]
 
-  def self.parse_options(options = {})
+  def self.parse_options(options = {}) #:nodoc:
     default_options = {
       :ratio => 25,     # percentage
       :language => 'en' # ISO 639-1 code
@@ -75,6 +75,18 @@ end
 class String
   extend Summarize
 
+  # Summarizes a string
+  #
+  # == Options:
+  # ratio::
+  #   A Fixnum from 0 to 100
+  #
+  # language::
+  #   An ISO 639-1 language code. See Summarize::LANGUAGES for the supported list.
+  #
+  # == Returns:
+  # A string summary
+  #
   def summarize(options = {})
     dict_file, ratio = Summarize.parse_options(options)
     String.send(:summarize, self, dict_file, ratio)
@@ -84,6 +96,18 @@ end
 
 class File
 
+  # Summarizes the contents of a file
+  #
+  # == Options:
+  # ratio::
+  #   A Fixnum from 0 to 100
+  #
+  # language::
+  #   An ISO 639-1 language code. See Summarize::LANGUAGES for the supported list.
+  #
+  # == Returns:
+  # A string summary
+  #
   def summarize(options = {})
     self.read.summarize(options)
   end

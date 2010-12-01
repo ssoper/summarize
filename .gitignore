@@ -1,6 +1,7 @@
 Makefile
 lib/**/*.bundle
 tmp/*
+doc/*
 *.DS_Store
 coverage/*
 *.swp
