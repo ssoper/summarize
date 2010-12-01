@@ -12,7 +12,7 @@
     cd summarize
     rake build
     gem build summarize.gemspec
-    gem install summarize-1.0.gem
+    gem install summarize-1.0.1.gem
 
 ## Usage
 
