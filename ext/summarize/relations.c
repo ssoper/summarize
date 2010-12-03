@@ -132,8 +132,8 @@ return topics;
 
 /*Gives a score on the relations between two lists of topics; simmilar to the inner product*/
 int ots_topic_list_score(
-const GList *topic_list1,
-const GList *topic_list2)
+GList *topic_list1,
+GList *topic_list2)
 {
 	int count=0;
 	GList *tmplist1;

@@ -10,7 +10,7 @@ class Hash #:nodoc:
 end unless {}.respond_to? 'symbolize_keys'
 
 module Summarize
-  VERSION = "1.0.1"
+  VERSION = "1.0.2"
 
   LANGUAGES = [
     'bg', # Bulgarian
@@ -84,6 +84,9 @@ class String
   # language::
   #   An ISO 639-1 language code. See Summarize::LANGUAGES for the supported list.
   #
+  # dictionary::
+  #   A path to a custom stemming XML file
+  #
   # == Returns:
   # A string summary
   #
@@ -104,6 +107,9 @@ class File
   #
   # language::
   #   An ISO 639-1 language code. See Summarize::LANGUAGES for the supported list.
+  #
+  # dictionary::
+  #   A path to a custom stemming XML file
   #
   # == Returns:
   # A string summary

@@ -102,11 +102,14 @@ N = (total-number-of-sentences)
 f = n/N
 */
 
+/*
+ssoper: unused and causing warning messages
+
 double
 ots_calc_idf (const int term_count,const int doc_word_count)
 {
 return -log(doc_word_count/term_count);
-}
+}*/
 
 double
 ots_calc_tf (const int term_count,const int doc_word_count)

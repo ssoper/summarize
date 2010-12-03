@@ -9,15 +9,14 @@
 #include "libots.h"
 #include "summarize.h"
 
-const char *OTS_ERROR_BAD_DICT = "Cannot load dictionary file";
 
 void Init_summarize() {
  VALUE rb_mOts = rb_define_module("Summarize");
  rb_define_module_function(rb_mOts, "summarize", summarize, 3);
 }
 
-static VALUE summarize(const VALUE self, const VALUE rb_str, const VALUE rb_dict_file, const VALUE rb_ratio) {
-  int length = RSTRING_LEN(rb_str);
+static VALUE summarize(const VALUE self, volatile VALUE rb_str, volatile VALUE rb_dict_file, const VALUE rb_ratio) {
+  long int length = RSTRING_LEN(rb_str);
   char *text = StringValuePtr(rb_str);
   char *dictionary_file = StringValuePtr(rb_dict_file);
   int ratio = NUM2INT(rb_ratio);
@@ -27,7 +26,7 @@ static VALUE summarize(const VALUE self, const VALUE rb_str, const VALUE rb_dict
 
   if (!ots_load_xml_dictionary(doc, dictionary_file)) {
     ots_free_article(doc);
-    rb_raise(rb_eRuntimeError, OTS_ERROR_BAD_DICT);
+    rb_raise(rb_eRuntimeError, "Cannot load dictionary file");
     return Qnil;
   }
 

@@ -29,8 +29,7 @@
 int
 ots_match_post (const char *aWord,const char *post)
 {
-  int i, wlen, plen;
-  
+  long int i, wlen, plen;
 
   wlen = strlen (aWord);
   plen = strlen (post);
@@ -118,7 +117,7 @@ ots_parse_stream(const unsigned char *utf8, size_t len, OtsArticle * Doc)	/*pars
   OtsSentence *tmpLine = ots_append_line (Doc);
   OtsStemRule * rule=Doc->stem;
   gunichar uc;
-  int index = 0;
+  size_t index = 0;
   char *s = (char *) utf8;
   GString *word_buffer = g_string_new (NULL);
 

@@ -1,6 +1,7 @@
 require 'mkmf'
 
-$CFLAGS = ENV["CFLAGS"].to_s + " " + `pkg-config --cflags glib-2.0 libxml-2.0`.chomp
-$LDFLAGS = ENV["LDFLAGS"].to_s  + " " + `pkg-config --libs glib-2.0 libxml-2.0`.chomp
+%w(glib-2.0 libxml-2.0).each do |lib|
+  pkg_config lib
+end
 
 create_makefile('summarize/summarize')

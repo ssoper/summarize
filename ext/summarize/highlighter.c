@@ -31,7 +31,7 @@ static int
 ots_highlight_max_line (OtsArticle * Doc)
 {
   GList *li;
-  int max = 0;
+  long int max = 0;
   for (li = (GList *) Doc->lines; li != NULL; li = li->next)
     {
       if (0 == (((OtsSentence *) li->data)->selected))	/* if not selected , count me in */

@@ -70,7 +70,7 @@ if (rule != NULL)
 static void
 ots_stem_break (unsigned const char *comp,unsigned char *part_a,unsigned char *part_b)	/*given already alocated part_a and b */
 {				/*example "red|blue" */
-  int i, j, clen;
+  long int i, j, clen;
   i = 0;
   j = 0;
   
@@ -106,7 +106,7 @@ ots_stem_break (unsigned const char *comp,unsigned char *part_a,unsigned char *p
 static unsigned char *
 ots_stem_remove_pre (unsigned const char *aWord,unsigned const char *pre,unsigned const char *new)
 {
-  int i, plen, wlen, nlen;
+  long int i, plen, wlen, nlen;
   unsigned char *new_str = NULL;
 
   if (aWord==NULL) return NULL;
@@ -135,7 +135,7 @@ ots_stem_remove_pre (unsigned const char *aWord,unsigned const char *pre,unsigne
 static unsigned char *
 ots_stem_remove_post (unsigned const char *aWord,unsigned const char *post,unsigned const char *new)
 {
-  unsigned int i, wlen, plen, nlen;
+  unsigned long int i, wlen, plen, nlen;
   unsigned char *new_str = NULL;
 
   if ((NULL==aWord)||(NULL==post)||(NULL==new)) return NULL;

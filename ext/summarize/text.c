@@ -57,7 +57,7 @@ static void
 ots_print_line (FILE * stream, const OtsSentence * aLine)
 {
   unsigned char *utf8_txt;
-  size_t len;
+  size_t len = 0;
   utf8_txt = ots_get_line_text (aLine, TRUE, &len);
   fwrite (utf8_txt, 1, len, stream);
   g_free (utf8_txt);
@@ -69,7 +69,7 @@ ots_get_doc_text (const OtsArticle * Doc, size_t * out_len)
   GList *li;
   GString *text;
   unsigned char *utf8_data;
-  size_t line_len;
+  size_t line_len = 0;
 
   text = g_string_new (NULL);
 
