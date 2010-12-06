@@ -8,5 +8,5 @@
 
 #ifndef __summarize_h__
 #define __summarize_h__
-static VALUE summarize(VALUE, VALUE, VALUE, VALUE);
+static VALUE summarize(VALUE, VALUE, VALUE, VALUE, VALUE);
 #endif

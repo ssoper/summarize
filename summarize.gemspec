@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email            = %q{sean.soper@gmail.com}
 
   s.rubygems_version  = %q{1.3.7}
-  s.date              = %q{2010-12-03}
+  s.date              = %q{2010-12-06}
   s.rubyforge_project = "summarize"
 
   s.require_paths = ["lib"]

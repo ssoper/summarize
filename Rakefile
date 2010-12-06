@@ -44,6 +44,11 @@ task :test => :build do
         content.summarize(:dictionary => '/path/to/nowhere')
       end
     end
+
+    def test_topics
+      content, topics = @jupiter.split('||').first.summarize(:topics => true)
+      assert_equal topics, "jupiter,planet,moon,system,mass"
+    end
   end
 
 end

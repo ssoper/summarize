@@ -12,17 +12,21 @@
 
 void Init_summarize() {
  VALUE rb_mOts = rb_define_module("Summarize");
- rb_define_module_function(rb_mOts, "summarize", summarize, 3);
+ rb_define_module_function(rb_mOts, "summarize", summarize, 4);
 }
 
-static VALUE summarize(const VALUE self, volatile VALUE rb_str, volatile VALUE rb_dict_file, const VALUE rb_ratio) {
+static VALUE summarize(const VALUE self, volatile VALUE rb_str, volatile VALUE rb_dict_file, const VALUE rb_ratio, const VALUE rb_topics) {
   long int length = RSTRING_LEN(rb_str);
   char *text = StringValuePtr(rb_str);
   char *dictionary_file = StringValuePtr(rb_dict_file);
   int ratio = NUM2INT(rb_ratio);
-  unsigned char *result;
+
   size_t result_len;
   OtsArticle *doc = ots_new_article();
+
+  VALUE summary;
+  VALUE topics;
+  VALUE result;
 
   if (!ots_load_xml_dictionary(doc, dictionary_file)) {
     ots_free_article(doc);
@@ -34,9 +38,17 @@ static VALUE summarize(const VALUE self, volatile VALUE rb_str, volatile VALUE r
   ots_grade_doc(doc);
   ots_highlight_doc(doc, ratio);
 
-  result = ots_get_doc_text(doc, &result_len);
+  summary = rb_str_new2(ots_get_doc_text(doc, &result_len));
+  topics = rb_str_new2((const char *)doc->title);
 
   ots_free_article(doc);
 
-  return rb_str_new2(result);
+  if (rb_topics == Qtrue) {
+    result = rb_ary_new();
+    rb_ary_push(result, summary);
+    rb_ary_push(result, topics);
+    return result;
+  } else {
+    return summary;
+  }
 }

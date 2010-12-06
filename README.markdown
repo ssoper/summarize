@@ -33,6 +33,13 @@ You can also use custom stemming rules
 
     "text to summarize".summarize(:dictionary => 'path/to/custom/dictionary')
 
+Topics can also be returned
+
+    # Returns an array with content first and topics second
+    content, topics = "text to summarize".summarize(:topics => true)
+    # content => summarized text
+    # topics  => Comma-delimited string of topics
+
 ## Dependencies
 
 You must have glib-2.0 and libxml-2.0 installed and properly configured.

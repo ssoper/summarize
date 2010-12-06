@@ -10,7 +10,7 @@ class Hash #:nodoc:
 end unless {}.respond_to? 'symbolize_keys'
 
 module Summarize
-  VERSION = "1.0.2"
+  VERSION = "1.0.3"
 
   LANGUAGES = [
     'bg', # Bulgarian
@@ -54,8 +54,9 @@ module Summarize
 
   def self.parse_options(options = {}) #:nodoc:
     default_options = {
-      :ratio => 25,     # percentage
-      :language => 'en' # ISO 639-1 code
+      :ratio => 25,      # percentage
+      :language => 'en', # ISO 639-1 code
+      :topics => false
     }
 
     options = default_options.merge(options.symbolize_keys)
@@ -67,7 +68,7 @@ module Summarize
       dict_file = File.join(File.expand_path(File.dirname(__FILE__)), "../ext/summarize/dic/#{options[:language]}")
     end
 
-    return [dict_file, options[:ratio]]
+    return [dict_file, options[:ratio], options[:topics]]
   end
 
 end
@@ -87,12 +88,16 @@ class String
   # dictionary::
   #   A path to a custom stemming XML file
   #
+  # topics::
+  #   A boolean indicating whether to return topics as well. Return value will be
+  #   an array instead with content first and topics second. Default is false.
+  #
   # == Returns:
-  # A string summary
+  # A string summary OR an array of content and topics
   #
   def summarize(options = {})
-    dict_file, ratio = Summarize.parse_options(options)
-    String.send(:summarize, self, dict_file, ratio)
+    dict_file, ratio, topics = Summarize.parse_options(options)
+    String.send(:summarize, self, dict_file, ratio, topics)
   end
 
 end
@@ -111,8 +116,12 @@ class File
   # dictionary::
   #   A path to a custom stemming XML file
   #
+  # topics::
+  #   A boolean indicating whether to return topics as well. Return value will be
+  #   an array instead with content first and topics second. Default is false.
+  #
   # == Returns:
-  # A string summary
+  # A string summary OR an array of content and topics
   #
   def summarize(options = {})
     self.read.summarize(options)
