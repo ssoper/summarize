@@ -1,4 +1,5 @@
 Makefile
+mkmf.log
 lib/**/*.bundle
 tmp/*
 doc/*
