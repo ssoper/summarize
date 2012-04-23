@@ -8,18 +8,18 @@
 
 ### Manual
 
-    git clone https://github.com/ssoper/summarize.git
+    git clone https://github.com/svenyurgensson/summarize.git
     cd summarize
     rake build
     gem build summarize.gemspec
-    gem install summarize-1.0.3.gem
+    gem install summarize-1.0.4.gem
 
 ## Usage
 
 The summarize method is added to File which you can use to summarize the contents of any plain text file
 
     File.open('path/to/file').summarize
-    
+
 Or use the String method
 
     "text to summarize".summarize
@@ -43,12 +43,14 @@ Topics can also be returned
 ## Dependencies
 
 You must have glib-2.0 and libxml-2.0 installed and properly configured.
-    
+
 ## Author
 
 Gem written by Sean Soper ([@ssoper](http://twitter.com/ssoper))
 
 The Open Text Summarizer library was written by Nadav Rotem and can be found at <http://libots.sourceforge.net/>
+
+Gem fixed to handle UTF-8 encoding by Yury Batenko ([@svenyurgensson](http://twitter.com/svenyurgensson))
 
 ## License
 
