@@ -10,7 +10,7 @@ class Hash #:nodoc:
 end unless {}.respond_to? 'symbolize_keys'
 
 module Summarize
-  VERSION = "1.0.3"
+  VERSION = "1.0.4"
 
   LANGUAGES = [
     'bg', # Bulgarian
