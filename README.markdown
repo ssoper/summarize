@@ -8,7 +8,7 @@
 
 ### Manual
 
-    git clone https://github.com/svenyurgensson/summarize.git
+    git clone https://github.com/ssoper/summarize.git
     cd summarize
     rake build
     gem build summarize.gemspec

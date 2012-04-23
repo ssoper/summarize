@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name             = %q{summarize}
   s.summary          = %q{Open Text Summarizer}
   s.description      = %q{Ruby C Extension for Open Text Summarizer}
-  s.homepage         = %q{http://github.com/svenyurgensson/summarize}
+  s.homepage         = %q{http://github.com/ssoper/summarize}
   s.version          = Summarize::VERSION
   s.authors          = ["Sean Soper", "Yury Batenko"]
   s.email            = %q{sean.soper@gmail.com}
