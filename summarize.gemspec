@@ -1,5 +1,4 @@
-$:.unshift(File.join(File.dirname(__FILE__), "lib"))
-require "summarize"
+require "./lib/summarize/version" unless defined? Summarize::VERSION
 
 Gem::Specification.new do |s|
   s.name             = %q{summarize}
